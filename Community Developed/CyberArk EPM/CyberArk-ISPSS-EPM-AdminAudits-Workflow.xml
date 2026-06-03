@@ -60,6 +60,7 @@ CyberArk EPM AdminAudit API - QRadar Integration (Universal Cloud REST API)
 		<!-- Step2: get the tenanturl using the api of your region api-<REGION>.epm.cyberark.cloud/epm/api/accounts/tenanturl-->
 		<CallEndpoint url="https://${/api_host}/epm/api/accounts/tenanturl" method="GET" savePath="/get_tenanturl">
 			<RequestHeader name="authorization" value="${/access_token_type} ${/access_token}" />
+			<RequestHeader name="x-cybr-telemetry" value="aW49SUJNIFFyYWRhciBFUE0maXY9Mi4wJnZuPUlCTSZpdD1TSUVN" />
 		</CallEndpoint>
 
 		<!-- Check for errors during Auth-->
@@ -75,6 +76,7 @@ CyberArk EPM AdminAudit API - QRadar Integration (Universal Cloud REST API)
 		<!-- Get all the sets, there could be 0 or more than 1 set -->
 		<CallEndpoint url="${/epm_url}/EPM/API/Sets" method="GET" savePath="/get_sets">
 			<RequestHeader name="authorization" value="${/access_token_type} ${/access_token}" />
+			<RequestHeader name="x-cybr-telemetry" value="aW49SUJNIFFyYWRhciBFUE0maXY9Mi4wJnZuPUlCTSZpdD1TSUVN" />
 		</CallEndpoint>
 		
 		<!-- Check for errors during get Sets  do i need to retry here 3 times as well?-->
@@ -107,6 +109,7 @@ CyberArk EPM AdminAudit API - QRadar Integration (Universal Cloud REST API)
 							<QueryParameter name="datefrom" value="${/epm_audit/from_time}" />
 							<QueryParameter name="dateto" value="${/epm_audit/to_time}" />
 							<RequestHeader name="authorization" value="${/access_token_type} ${/access_token}" />
+							<RequestHeader name="x-cybr-telemetry" value="aW49SUJNIFFyYWRhciBFUE0maXY9Mi4wJnZuPUlCTSZpdD1TSUVN" />
 						</CallEndpoint>
 						<!-- EPM/API/Sets/bc.../AdminAudit/?offset=13000&limit=500&datefrom=...&dateto=xxx -->
 						<!-- Check for errors during Events Fetch how do we handle 403? authenciation error from EPM in middle of the run. or 500 error etc? Eat it and ignore it will still get the total counts. the get_events/body/message will be empty like []

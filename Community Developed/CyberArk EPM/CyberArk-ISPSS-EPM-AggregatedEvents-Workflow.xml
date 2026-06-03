@@ -64,6 +64,7 @@ CyberArk ISPSS EPM AggregatedEvents API - QRadar Integration (Universal Cloud RE
 		<!-- Step2: get the tenanturl using the api of your region api-<REGION>.epm.cyberark.cloud/epm/api/accounts/tenanturl-->
 		<CallEndpoint url="https://${/api_host}/epm/api/accounts/tenanturl" method="GET" savePath="/get_tenanturl">
 			<RequestHeader name="authorization" value="${/access_token_type} ${/access_token}" />
+			<RequestHeader name="x-cybr-telemetry" value="aW49SUJNIFFyYWRhciBFUE0maXY9Mi4wJnZuPUlCTSZpdD1TSUVN" />
 		</CallEndpoint>
 
 		<!-- Check for errors during Auth-->
@@ -78,6 +79,7 @@ CyberArk ISPSS EPM AggregatedEvents API - QRadar Integration (Universal Cloud RE
 		<!-- Step3 - Get all the sets, there could be 0 or more than 1 set -->
 		<CallEndpoint url="${/epm_url}/EPM/API/Sets" method="GET" savePath="/get_sets">
 			<RequestHeader name="authorization" value="${/access_token_type} ${/access_token}" />
+			<RequestHeader name="x-cybr-telemetry" value="aW49SUJNIFFyYWRhciBFUE0maXY9Mi4wJnZuPUlCTSZpdD1TSUVN" />
 		</CallEndpoint>
 		
 		<!-- Check for errors during get Sets  do i need to retry here 3 times as well?-->
@@ -112,6 +114,7 @@ CyberArk ISPSS EPM AggregatedEvents API - QRadar Integration (Universal Cloud RE
 							<CallEndpoint url="${/epm_url}/EPM/API/Sets/${/current_set/Id}/events/aggregations/search" method="POST" savePath="/get_events">
 								<QueryParameter name="nextCursor" value="${/epm_event/nextcursor}" />
 								<RequestHeader name="authorization" value="${/access_token_type} ${/access_token}" />
+								<RequestHeader name="x-cybr-telemetry" value="aW49SUJNIFFyYWRhciBFUE0maXY9Mi4wJnZuPUlCTSZpdD1TSUVN" />
 								<RequestBody type="application/json" encoding="UTF-8">{ "filter": "arrivalTime GE ${/epm_event/from_time}" }</RequestBody>
 								
 								<!-- 

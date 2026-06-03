@@ -1,6 +1,6 @@
 Author Name: bizdevtech@cyberark.com
 Maintainer Name: Compostcy
-Version Number: 1.0
+Version Number: 2.0
 Version Description: add ISPSS authentication to EPM events retrieval
 
 EPM Configuration
